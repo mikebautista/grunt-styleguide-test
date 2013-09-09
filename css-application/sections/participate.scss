@@ -1,0 +1,10 @@
+﻿.participate {
+  font-weight: bold;
+  &, a {
+    color: $secondary;
+  }
+  a {
+    text-decoration: none;
+    margin-left: 15px;
+  }
+}

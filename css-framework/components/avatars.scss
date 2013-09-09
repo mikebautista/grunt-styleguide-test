@@ -1,0 +1,71 @@
+﻿// Avatars
+// 
+// Markup: 
+// <div></div>
+//
+// Styleguide 4.1
+
+// Table of Content
+// ==================================================
+// #BrowserFixes
+// #Base
+
+// #BrowserFixes
+// ==================================================
+// None, Yet.
+
+// #Base
+// ==================================================
+
+
+.user-image {
+  width: 62px;
+  padding: 0;
+  background-color: $tan;
+  background-position: center;
+  background-size: 90% auto;
+  border: 2px solid $white;
+  box-shadow: 0 0 0 1px $tan3;
+  @include media($mobile) {
+    width: 42px;
+  }
+  img {
+    width: 100%;
+    float: left;
+  }
+}
+
+.user-grid {
+  @include clearfix;
+  overflow: auto;
+  .user-image {
+    float: left;
+    box-shadow: none;
+    border: none;
+    margin: 0 4px 4px 0;
+  }    
+}
+
+.logged-in {
+  .user-image {
+    overflow: hidden;
+    // img {
+    //   width: 150%;
+    //   margin-left: -25%;
+    // }
+  }  
+}
+
+.avatar {
+  background-color: $tan !important;
+  background-size: 100%;
+  background-position: center;
+  -webkit-filter: saturate(0%); // this is a quick qay to try out the grey avatars. this should be replaced with real grey avatars.
+}
+
+@for $i from 1 through 10 {
+  .avatar#{$i} {
+    @extend .avatar;
+    @extend .icon-avatar_#{$i};
+  }
+}

@@ -1,0 +1,579 @@
+﻿	/* Table of Content
+	==================================================
+	  #Slider
+	  #Animate
+	  #General
+	  #Celebrations
+	  #NewTopic
+	  #OnFire
+	  #Short
+	  #Micro
+	  #BrowserFixes
+	  */
+
+
+	/* #Slider
+	================================================== */
+// The basic wrap for the slide functionality
+
+.slider-wrap, .slider-wrap-unauth {
+  position: relative;
+  height: 449px;
+}
+.slider > article {
+  float: left;
+}
+
+// Slide Pagination Dots
+.dots {
+  position: absolute;
+  overflow: auto;
+  z-index: 3;
+  bottom: 10px;
+  width: 100%;
+  margin: 0;
+  padding-bottom: 4px;
+  text-align: center;
+  li {
+    @extend .dot-btn;
+    display: inline-block !important;
+    margin: 0 4px;
+    border-radius: 50px;
+    cursor: pointer;
+    //behavior: url(/Content/Responsive/css-framework/vendor/PIE.htc);
+  }
+}
+
+#marquees.open {
+  .dots { display: none; }
+}
+
+
+/* #Animate
+================================================== */
+// Animate Marquees In - This class gets added by JS to trigger the animation.
+
+body.start-animations {
+  #marquees.animate {
+    &:before, &:after {
+      opacity: 1;
+    }
+    article {
+      opacity: 0;
+      visibility: visible;
+      @include transform(translateY(0));
+    }
+  }
+}
+
+#marquees.animate {
+  &:before, &:after {
+    opacity: 0;
+    @include transition(opacity 1.5s ease-in-out);
+  }
+  article {
+    opacity: 0;
+    visibility: hidden;
+    @include transform(translateY(-30px));
+    @include transition(transition-property-names((transform), webkit) 1.0s ease-in-out, opacity 1.0s ease-in-out);
+  }
+}
+
+	/* #General
+	================================================== */
+
+#marquees {
+  @include span-columns(12);
+  @include clearfix;
+  //margin-top: 60px;
+  position: relative;
+  //background: $tan4 url(/Content/Responsive/images/marquee-background.jpg) center center;
+  background-size: cover;
+  border-bottom: 1px solid $tan4;
+  overflow: visible !important;
+  &:before, &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  &:before { background: rgba(0,0,0,0.4); }
+  &:after { @include linear-gradient(bottom, rgba(0,0,0,0.6), rgba(0,0,0,0), $fallback: transparent); }
+  &.theme-light {
+    &:before { background: rgba(255,255,255,0.8); }
+    &:after { @include linear-gradient(bottom, rgba(255,255,255,0.9), rgba(0,0,0,0), $fallback: transparent); }
+    article {
+      h1 {
+        color: $black;
+        text-shadow: 2px 2px 0 $white;
+      }
+    }
+  }
+  .slider-wrap, .slider-wrap-unauth {
+    overflow: visible !important;
+    @include clearfix;
+    height: 560px;
+  }
+  @media only screen and (max-width: 360px) {
+    .slider-wrap {
+      .share-large {
+        padding: 0;
+        padding-top: 15px;
+      }
+    }
+  }
+  a.button.sign-up {
+    font-size: 2.2em;
+    margin-top: 15px;
+    padding: 25px 20px  23px;
+    @include font-display;
+    text-transform: uppercase;
+    font-weight: normal;
+    display: inline-block;
+    line-height: 1.05em;
+  }
+  article, .topic {
+    // display: none;
+    &.first {
+      display: block;
+    }
+    margin: 0 auto;
+    padding: 0 100px 0 100px;
+    text-align: center;
+    position: relative;
+    width: 100% !important;
+    z-index: 6;
+    background-color: transparent !important;
+    @include media($tablet) {
+      padding-left: 60px;
+      padding-right: 60px;
+    }
+    @include media($mobile) {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    @media only screen and (max-width: 360px) {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    color: $white;
+    a {
+      color: $white;
+      &:hover {
+        color: $grey;
+      }
+    }
+    h1 {
+      font-size: 3em;
+      line-height: 1.05em;
+      text-shadow: 2px 2px 0 $black;
+      color: $white;
+      @include css-hyphens(none);
+      @include font-serif;
+      @media only screen and (max-width: 768px) {
+        font-size: 2em;
+      }
+      @include media($mobile) {
+        font-size: 1.8em;
+      }   
+    }
+    .user-image {
+      margin: 0 auto 15px;
+      width: 90px;
+      height: 90px;
+    }
+    .forward {
+      text-align: center;
+      margin: 0 20px 15px;
+      &>a.button {
+        font-size: 1.5em;
+        padding: 20px 60px;
+        margin-top: 20px;
+        display: inline-block;
+      }
+    }
+    &.direct {
+      &>p {
+        display: none;
+      }
+      .meta {
+        display: none;
+      }
+    }
+    .meta {
+      width: auto;
+      margin: 8px 0 0 12px;
+      a {
+        color: $primary;
+        text-decoration: none;
+        margin: 0 20px 0 0;
+        font-weight: bold;
+      }
+    }
+    .cheer-btn {
+      margin: 0 auto;
+      span {
+        width: 50px !important;
+        height: 50px !important;
+      }
+    }
+    &.current {
+      .banner {
+        top: 28px;
+      }
+    }
+    .banner {
+      @include transition (top 0.2s ease-in-out 0.2s);
+      font-size: 22px;
+      top: -100px;
+      right: -40px;
+      span {
+        top: 11px;
+        letter-spacing: 0.08em;
+      }
+      &:before {
+        border-bottom: 40px solid $primary;
+        border-left: 40px solid transparent;
+        border-right: 40px solid transparent;
+        width: 100px;
+      }
+    }
+  }
+  .topic {
+    padding-top: 0px;
+  }
+  #background {
+    position: absolute;
+    overflow: hidden;
+    left: 0px; 
+    top: 0px; 
+    z-index: -1;
+    @media only screen and (max-width: 1024px) {
+      width: 100% !important;
+    }
+    img {
+      position: relative;
+    }
+  }
+
+}
+#marquees form, #marquees article > .poll-options {
+  @include clearfix;
+  position: relative;
+  z-index: 20;
+  background-color: $black;
+  background: rgba(0,0,0,0.75);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  margin: 0 auto;
+  max-width: 600px;
+  color: $grey3;
+  .separator {
+    padding: 0;
+    margin: 0;
+    border: none;
+    .close-btn {
+      position: absolute;
+      right: -10px;
+      top: 0;
+    }
+  }
+  input.submit {
+    float: right;
+    width: 28%;
+    margin-left: 2%;
+  }
+  @media only screen and (max-width: 320px) {
+    input.submit {
+      float: left;
+      width: 100%;
+      margin-left: 0;    
+    }  
+  }
+  .first {
+    padding: 20px;
+  }
+  .limit {
+    padding: 10px 20px 0;
+    margin-bottom: -10px;
+  }
+}
+
+#marquees article.poll-instant {
+  ul.poll-options li {
+    text-align: left;
+    background: $white;
+    border: 1px solid $black;
+    border-radius: 5px;
+  }
+  .submit {
+    float: right;
+  }
+  .first, .more {
+    padding: 0 20px;
+  }
+  .first {
+    padding: 20px 20px 0;
+    margin: 0;
+    .poll-options {
+      padding: 0;
+      margin: 0;
+    }
+  }
+  .forward {
+    background: $black;
+    padding: 15px 20px;
+    margin: 0;
+    margin-top: -30px;
+    &:after {
+      @include linear-gradient(bottom, rgba(0,0,0,0.5), rgba(0,0,0,0), $fallback: transparent);
+    }
+  }
+  &.open{
+    &.more-options {
+      .forward {
+        margin-top: -30px;
+      }
+    }
+    .forward {
+      margin-top: 0;
+    }
+    &.open-close {
+      .forward {
+        margin-top: -10px !important;
+      }
+    }
+  }
+  h1:hover {
+    cursor: pointer;
+  }
+  &.complete .poll-average {
+    //overflow: hidden;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #000000;
+    background: rgba(0,0,0,0.75);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    //padding: 20px 20px 0;
+    position: relative;
+    li {
+      border-radius: 0;
+      p, .count {
+        color: #333;
+      }
+    }
+    .forward {
+      background: transparent;
+      overflow: hidden;
+      .tell-your-friends {
+        float: left;
+        margin-top: 5px;
+        margin-left: 20px;
+      }
+      ul {
+        float: right;
+        margin-left: 0;
+        margin-right: 20px;
+      }
+      @media only screen and (max-width: 660px) {
+        ul {
+          float: left;
+          margin: 0;
+          margin-left: 15px;
+        }
+      }
+    }
+  }
+}
+
+#marquees .media {
+  .video-wrapper {
+    padding-top: 50px;
+  }
+  @media only screen and (min-width: 650px) {
+    .video-wrapper {
+      width: 620px;
+      height: 370px;
+      margin: 10px auto 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+}
+
+#marquees article.question {
+  .more {
+    padding: 0 20px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    overflow: visible;
+    .count-wrap {
+      width: 100%;
+      float: none;
+    }
+  }
+  h1:hover {
+    cursor: pointer;
+  } 
+  .idea-submitted {
+    overflow: hidden;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #000000;
+    background: rgba(0,0,0,0.75);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 20px 0 0;
+    a.idea-added {
+        font-weight: bold;
+        font-size: 1.25em;
+        text-align: left;
+        padding: 5px 10px;
+        display: block;
+        background: none;
+        border: 0px;
+        margin: 0 0 20px 10px;
+      p, .count {
+        color: #333;
+      }
+    }
+    .forward {
+      background: transparent;
+      overflow: hidden;
+      margin: 0;
+      .tell-your-friends {
+        float: left;
+        margin-top: 5px;
+        margin-left: 20px;
+      }
+      ul {
+        float: right;
+        margin-left: 0;
+        margin-right: 20px;
+      }
+      @media only screen and (max-width: 660px) {
+        ul {
+          float: left;
+          margin: 0;
+          margin-left: 15px;
+        }
+      }
+    }
+  } 
+}
+
+#marquees article.about-project {
+  .user-image {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+#marquees article.open form {
+  background: rgba(0, 0, 0, 1);
+  @include transition (background 0.2s ease-in);
+}
+
+#marquees article form {
+  background: rgba(0, 0, 0, 0.75);
+  @include transition (background 0.2s ease-in);
+}
+
+#marquees ul.icon-list li span {
+  display: block;
+  background-color: $tan;
+  background-size: 64px;
+  background-position: 3px 4px;
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 15px;
+  border-radius: 8px;
+  @include transition(transition-property-names((transform), webkit) 0.2s ease-in-out);
+}
+
+#marquees ul.icon-list {
+  margin: 0;
+  @include clearfix;
+  width: 600px;
+  margin: 30px auto 15px;
+  a {
+    font-weight: normal;
+    color: $grey;
+    &:hover {
+      span {
+        @include transform(translateY(-5px));
+      }
+    }
+  }
+  &.whosListeningHide {
+    width: 420px;
+  }
+  li {
+    margin: 0 10px 8px;
+    width: 180px;
+    float: left;
+    position: relative;
+    p {
+      margin: 0;
+      @include font-display;
+      text-transform: uppercase;
+      font-size: 2.2em;
+      line-height: 1em;
+      letter-spacing: 0.05em;
+      @include css-hyphens(none);
+    }
+  }
+  @media only screen and (max-width: 720px) {
+    width: auto !important;
+    margin: 30px 0 15px;
+    li {
+      width: auto;
+      float: none;
+      br {
+        display: none;
+      }
+      p {
+        vertical-align: middle;
+        font-size: 2em;
+      }
+      span {
+        display: none;
+      }
+    }
+  }
+}
+
+	/* #BrowserFixes
+	================================================== */
+
+.ie8 #marquees {
+  background-position: top center;
+  .slider-wrap, .slider-wrap-unauth {
+    background: url(/Content/Responsive/images/bg-transparent-fallback.png) 0 0 repeat;
+  }
+  h1, .topic h1 {
+    font-size: 3em;
+    line-height: 1.05em;
+    text-shadow: 2px 2px 0 $black;
+    color: $white;
+    @include css-hyphens(none);
+    @include font-serif;
+    text-align: center;
+    margin-top: 50px;
+  }
+  .wrap, ul.icon-list a {
+    text-align: center;
+  }
+  a.button.sign-up {
+    margin: 0 auto;
+  }
+}

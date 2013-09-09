@@ -1,0 +1,94 @@
+﻿// Media Viewer
+//
+// An inline media viewer for viewing all attachments of an article.
+// TODO: Add ability to go Fullscreen, either via browser API or just full browser width.
+//
+// Styleguide 6.2
+
+// Table of Content
+// ==================================================
+// #BrowserFixes
+// #Mixins
+// #Base
+// #Exceptions
+
+// #Base
+// ==================================================
+
+div.media {
+  background: rgba(0,0,0,0.85);
+  position: absolute;
+  top: -1px;
+  z-index: 99;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  display: none;
+  .btn-corner {
+    z-index: 3;
+    font-size: 1.1em;
+  }
+  li.prev, li.next {
+    display: block;
+    width: 80%;
+    height: 100%;
+    position: absolute;
+    left: -55%;
+    opacity: .5;
+    z-index: 2;
+    cursor: pointer;
+    -webkit-filter: blur(0.04em);
+    p {
+      display: none;
+    }
+  }
+  li.next {
+    left: auto;
+    right: -55%;
+  }
+  li.current {
+    display: block;
+    img {
+      width: 75%;
+    }
+  }
+  ul li {
+    position: absolute;
+    text-align: center;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    padding: 20px;
+    text-align: center;
+    &:before {
+      content: "";
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+    }
+    img {
+      display: inline-block;
+      padding: 0;
+      vertical-align: middle;
+      width: 66%;
+      max-height: 100%;
+    }
+    p {
+      position: absolute;
+      bottom: -5px;
+      left: 10%;
+      width: 80%;
+      color: $white;
+      font-style: italic;
+      font-weight: bold;
+      background: $black;
+      padding: 5px 15px;
+      display: inline-block;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+  }
+}

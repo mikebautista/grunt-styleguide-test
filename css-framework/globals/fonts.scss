@@ -1,0 +1,72 @@
+﻿// Table of Content
+// ==================================================
+// #FontFaceIncludes
+// #FontStackMixins
+// #MMIconFontHelpers
+
+
+// #FontFaceIncludes
+// ==================================================
+
+// @font-face {
+//     font-family: 'League Gothic';
+//     src: url('/Content/Responsive/webfonts/leaguegothic-regular-webfont.eot');
+//     src: url('/Content/Responsive/webfonts/leaguegothic-regular-webfont.eot?#iefix') format('embedded-opentype'),
+//          url('/Content/Responsive/webfonts/leaguegothic-regular-webfont.woff') format('woff'),
+//          url('/Content/Responsive/webfonts/leaguegothic-regular-webfont.ttf') format('truetype'),
+//          url('/Content/Responsive/webfonts/leaguegothic-regular-webfont.svg#league_gothicregular') format('svg');
+//     font-weight: normal;
+//     font-style: normal;
+// }
+
+// @font-face {
+//     font-family: 'Rooney';
+//     src: url('/Content/Responsive/webfonts/rooney_regular.eot');
+//     src: url('/Content/Responsive/webfonts/rooney_regular.eot?#iefix') format('embedded-opentype'),
+//          url('/Content/Responsive/webfonts/rooney_regular.woff') format('woff'),
+//          url('/Content/Responsive/webfonts/rooney_regular.ttf') format('truetype');
+//     font-weight: normal;
+//     font-style: normal;
+// }
+
+// #FontStackMixins
+// ==================================================
+
+@mixin font-display {
+  font-family: "League Gothic", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;    
+}
+@mixin font-sans-serif {
+  font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+@mixin font-serif {
+  font-family: "Rooney", "Georgia", "Times New Roman", serif;
+  font-style: normal; // Serifs are always italicized for MindMixer
+}
+
+// #MMIconFontHelpers
+// ==================================================
+
+ /* This triggers a redraw in IE to Fix IE8's :before content rendering. */
+html:hover [class^="mm-"]{-ms-zoom: 1;}
+
+.mm-icon {
+  font-family: "mmicons";
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  text-rendering: optimizeLegibility;
+  white-space: nowrap;
+  vertical-align: middle;
+  /*-webkit-font-feature-settings: "liga"; Currently broken in Chrome >= v22. Falls back to text-rendering. Safari is unaffected. */
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  -o-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+
+.icon {
+  vertical-align: middle;
+}

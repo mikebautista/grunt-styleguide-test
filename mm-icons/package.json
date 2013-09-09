@@ -1,0 +1,17 @@
+{
+  "name": "MindMixer",
+  "version": "0.0.0",
+  "description": "Prototype",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "Cody Peterson",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "grunt-s3": "~0.2.0-alpha",
+    "grunt-webfont": "~0.1.3"
+  }
+}

@@ -1,0 +1,51 @@
+﻿// Tabs
+//
+// Simple tabs
+//
+// Markup:
+// <ul class="tabs">
+//   <li><a href="#" class="{$modifiers}">Foo Tab</a></li>
+//   <li><a href="#" class="">Bar Tab</a></li>
+// </ul>
+//
+// :hover - Hover State
+// .curent - Currently Active Tab
+//
+// Styleguide 6.1
+
+// Table of Content
+// ==================================================
+// #BrowserFixes
+// #Mixins
+// #Base
+// #Exceptions
+
+// #Base
+// ==================================================
+
+.tabs {
+  @include clearfix;
+  margin: 0;
+  &.icons a {
+    color: $tan6 !important;
+  }
+  &> * {
+    float: left;  
+    margin: 0 0 0 10px;
+    position: relative;
+    bottom: -4px;
+    a {
+      padding: 6px 10px 4px;
+      background: $tan2;
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-bottom: 4px solid $tan3;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+    &:hover a, &.current a {
+      border-bottom-color: $primary;
+    }
+  }
+}

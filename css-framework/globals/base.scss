@@ -1,0 +1,268 @@
+﻿ /* Table of Content
+ ==================================================
+  #Reset & Basics
+  #GridSettings
+  #Links
+  #Lists
+  #Images
+  #Buttons
+  #Form Elements
+  #Misc 
+  #Clearing 
+  #IE Fixes*/
+
+ /* #Reset & Basics (Inspired by E. Meyers)
+ ================================================== */
+  html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline; }
+  article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block; }
+  body {
+    line-height: 1; }
+  ol, ul {
+    list-style: none; }
+  blockquote, q {
+    quotes: none; }
+  blockquote:before, blockquote:after,
+  q:before, q:after {
+    content: '';
+    content: none; }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0; }
+
+ /* #Basic Styles
+ ================================================== */
+  body {
+    background: $tan;
+    @include font-sans-serif;
+    font-size: 14px;
+    line-height: 1.5em;
+    color: $grey5;
+    width: 100%;
+    -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  small {
+    font-size: 0.8em;
+  }
+
+  .fineprint {
+    font-size: 0.9em;
+    line-height: 1.2em;
+  }
+
+  .large {
+    font-size: 1.5em;
+  }
+
+  .display {
+    @include font-display;
+    text-transform: uppercase;
+    font-size: 2.2em;
+    line-height: 1.1em;
+    margin: 20px 0;
+  }
+
+ sup {
+  font-size: .75em;
+  top: -.4em;
+  position: relative;
+  vertical-align: baseline;
+ }
+
+ /* #Links
+ ================================================== */
+  a { color: inherit; text-decoration: none; outline: 0; }
+  a:hover, a:focus { color: inherit; }
+  p a, p a:visited { color: inherit; line-height: inherit; }
+
+ /* #Lists
+ ================================================== */
+  ul, ol { margin-bottom: 20px; }
+  ul { list-style: none outside; }
+  ol { list-style: decimal; }
+  ol, ul.square, ul.circle, ul.disc { margin-left: 30px; }
+  ul.square { list-style: square outside; }
+  ul.circle { list-style: circle outside; }
+  ul.disc { list-style: disc outside; }
+  ul ul, ul ol,
+  ol ol, ol ul { margin: 4px 0 5px 30px; font-size: 90%;  }
+  ul ul li, ul ol li,
+  ol ol li, ol ul li { margin-bottom: 6px; }
+  li { line-height: 1.4em; margin-bottom: 12px; list-style-type:none; }
+  li p { line-height: 1.4em; }
+
+ /* #Images
+ ================================================== */
+  img.scale-with-grid {
+    max-width: 100%;
+    height: auto;
+  }
+ 
+/*
+Form Items
+
+Our standard input fields. 
+
+Styleguide 2.
+*/
+/*
+Input Fields
+
+Here is our baseline `<input>` fields. Depending on the placement of these items the width and the height may change.
+
+Markup:
+<input type="text" placeholder="Example Text" />
+<input type="password" placeholder="Example Password" />
+<input type="email" placeholder="Example Email" />
+
+Styleguide 2.1.
+*/
+/*
+Textarea Field
+
+Here is our baseline `<textarea>` fields. Depending on the placement of these items the width and the height may change.
+
+Markup:
+<textarea placeholder="Example Textarea"></textarea>
+
+Styleguide 2.2.
+*/
+
+/*
+Select Field
+
+Here is our baseline `<select>` fields. Depending on the placement of these items the width and the height may change.
+
+Markup:
+<select name="">
+	<option value="Item 1">Item 1</option>
+	<option value="Item 2">Item 2</option>
+	<option value="Item 3">Item 3</option>
+</select>
+
+Styleguide 2.3.
+*/
+form {
+    margin-bottom: 20px; }
+  fieldset {
+    margin-bottom: 20px; }
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  textarea,
+  select {
+    border: 1px solid #ccc;
+    padding: 11px 10px;
+    outline: none;
+    border-radius: 5px;
+    font: 13px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    box-shadow: 0 0 1px $tan, 0 0 4px $tan4 inset;
+    color: #777;
+    margin: 0;
+    width: 210px;
+    max-width: 100%;
+    display: block;
+    margin-bottom: 20px;
+    background: $white;
+    @media only screen and (max-width: 767px) {
+      font-size:16px;
+    }
+  }
+  select {
+    padding: 0; }
+  input[type="text"]:focus,
+  input[type="password"]:focus,
+  input[type="email"]:focus,
+  textarea:focus {
+    border: 1px solid $tertiary;
+    box-shadow: 0 0 4px $tertiary, 0 0 4px $tertiary inset;
+  }
+  textarea {
+    min-height: 60px;
+  }
+  label,
+  legend {
+    display: block;
+    font-weight: normal;
+    font-size: 1.2em;
+    @include font-serif;
+    padding: 0 10px 10px;
+    font-style: normal;
+  }
+  select {
+    width: 220px;
+  }
+  input[type="checkbox"] {
+    display: inline;
+  }
+
+ /* #Misc
+ ================================================== */
+
+  strong {
+    font-weight: bold;
+  }
+
+  blockquote {
+    border-left: 4px solid $grey;
+    padding-left: 15px;
+    margin: 0 0 15px;
+    cite {
+      //@extend .cite-style; // Not sure what this is... - cody
+    }
+  }
+
+  article {
+    a {
+      font-weight: bold;
+      color: $grey4;
+      &:hover {
+        color: $grey5;
+      }
+    }
+  }
+
+  // mixin to add a simple right (corner angle) arrow to the far right of the element
+  .right-pointer {
+    &:hover:after {
+      border-color: $primary;
+    }
+    &:after {
+      content: " ";
+      position: absolute;
+      top: 12px;
+      right: 8px;
+      display: block;
+      width: 10px;
+      height: 10px;
+      border-color: $tan4;
+      border-width: 4px;
+      border-top-style: solid;
+      border-right-style: solid;
+      @include transform(rotate(45deg));
+    }
+  }
+
+ /* #Clearing
+ ================================================== */
+
+  .clear {
+    clear: both;
+  }
+
+ /* #IE Fixes
+ ================================================== */
+
+  //IE10 renders bullets in submenus
+  //add a transparent list-style-image to menu items
+  li {
+    list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
+  }

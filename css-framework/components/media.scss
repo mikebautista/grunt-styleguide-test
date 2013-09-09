@@ -1,0 +1,17 @@
+﻿// Styles dealing with media, attachments, photos, and video
+@import "media/media-viewer";
+
+// Simply adds the play icon over an image/element
+.video-image {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 15px;
+  img {
+    border: 3px solid $white;
+    width: 240px;
+    position: relative;
+  }
+  &:after {
+    @extend .video-overlay;
+  }
+}

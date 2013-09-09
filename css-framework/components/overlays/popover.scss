@@ -1,0 +1,366 @@
+﻿// Popovers
+//
+// Popovers can be used as tooltips or as a form of modal to reveal secondary interactions.
+//
+// Popovers get removed from the DOM and repositioned as a direct child of the <body> via JS.
+// This helps ensure that they don't get cropped by their parent elements overflow:hidden; attribute
+// and allow for smart positioning.
+// Markup Note: Actual elements don't have to be divs.
+// 
+// Markup:
+// <div class="popover {$modifiers}">Content</div>
+//
+// .below          - Lives under the target element with arrow facing up.
+// .right          - Lives to the right of the parent element with arrow on left side.
+// .left           - Lives to the left of the parent element with arrow on right side.
+// .below.left     - Below + Left
+// .below.right    - Below + Left
+// .popunder .popover - When you add a class of "popunder" to the has-popover element, the popover has no arrow and a flat top like Kid (from Kid N' Play)
+//
+// Styleguide 3.1
+
+// Table of Content
+// ==================================================
+// #Base
+// #Children
+// #Options
+// #BrowserFixes
+
+// #Base
+// ==================================================
+
+// Prepare popover for JS positioning
+body > .popover {
+  position: absolute;
+  display: block;
+}
+
+.has-popover, .has-popunder {
+  position: relative;
+  z-index: 99;
+  cursor: pointer;
+  .popover { display: none; } // Popovers get moved in the DOM before ever being displayed
+}
+.mini-overlay {
+  display: none;
+  position:fixed;
+  top:0 !important;
+  bottom: 0;
+  left:0 !important;
+  height: 100% !important;
+  width: 100% !important;
+  background: rgba(0,0,0,0.5);
+  @media screen and (max-width: 1024px) and (min-width: 680px) {
+    background: rgba(0,0,0,0);
+  }
+  z-index: 10000;
+}
+
+.popover {
+  position: absolute;
+  z-index: 99999;
+  top: 100%;
+  left: 50%;
+  right: 0;
+  width: 200px;
+  margin: 0;
+  padding: 4px 0 6px;
+  background: $tan;
+  border: 1px solid;
+  border-color: $tan $tan3 $tan2;
+  border-radius: 5px;
+  background-color: $white !important;
+  @include linear-gradient(top, $white, $tan);
+  box-shadow: inset 0 0 0 1px rgba(white, .9), 0 2px 8px rgba(black, .4);
+  &:before, &:after { // Arrow border and background
+    content: ' ';
+    position: absolute;
+    left: 50%;
+    margin-left: -9px;
+    width: 0;
+    height: 0;
+    bottom: -16px;
+    border: 9px outset transparent;
+  }
+  &:before { border-top: 9px solid $tan3; } // Arrow border
+  &:after { border-top: 9px solid $tan; } // Arrow background
+  .close-share-popover {
+    display: none;
+  }
+  &.settings {
+    position: fixed;
+    top: 61px !important;
+  }
+  // TODO: CLEAN UP
+  @media screen and (max-width: 680px) and (min-width: 321px) {
+    &.share-popover {
+      position:fixed;
+      display: none;
+      width: 100% !important;
+      bottom: 0;
+      left: 0 !important;
+      top: auto !important;
+      border-radius: 0px;
+      @include transform(translateY(67px));
+      @include transition-property(transform);
+      @include transition-duration(.2s);
+      @include transition-timing-function(ease);
+      &.slide-up {
+        display: block;
+        @include transform(translateY(7px));
+      }
+      &.slide-down {
+        display: block;
+        @include transform(translateY(75px));
+      }
+        
+      .share-this {
+        float: left;
+        margin-left: 8px !important;
+      }
+      
+      .close-share-popover {
+        display: block;
+        float: right;
+        width: 75px;
+        padding:12px;
+        font-size: 1.2em;
+        margin-top: -4px;
+        text-align: center;
+        color: $primary;
+        border-left: $primary 1px solid;
+        font-weight: bold;
+      }
+      &:before, &:after { display:none } // Arrow border
+    }
+  }
+  @media screen and (max-width: 320px) {
+    &.share-popover {
+      position:fixed;
+      display: none;
+      width: 100% !important;
+      bottom: 0;
+      left: 0 !important;
+      top: auto !important;
+      border-radius: 0px;
+      @include transform(translateY(110px));
+      @include transition-property(transform);
+      @include transition-duration(.2s);
+      @include transition-timing-function(ease);
+      &.slide-up {
+        display: block;
+        @include transform(translateY(0));
+      }
+      &.slide-down {
+        display: block;
+        @include transform(translateY(130px));
+      }
+      .share-this {
+        margin-left: 55px !important;
+      }
+      .close-share-popover {
+        display: block;
+        width: 100%;
+        padding:12px;
+        font-size: 1.2em;
+        text-align: center;
+        color: $primary;
+        border-top: $primary 1px solid;
+        font-weight: bold;
+        .icon_font_angle-arrow-down {
+          margin-left: 5px;
+          font-size: 12px;
+        }
+      }
+      &:before, &:after { display:none } // Arrow border
+    }
+  }
+  @media screen and (max-width: 520px) {
+    // .mini-overlay {
+    //   display: block;
+    //   position:fixed;
+    //   top:0;
+    //   bottom: 0;
+    //   left:0;
+    //   height: 100% !important;
+    //   width: 100% !important;
+    //   background: rgba(0,0,0,0.5);
+    //   z-index: 10000;
+    // }
+}
+}
+
+.popover.below {
+  &:before, &:after{ // Arrow
+    top: -16px;
+  }
+  &:before { // Arrow border
+    border-top: 9px outset transparent;
+    border-bottom: 9px solid $tan2;
+  }
+  &:after { // Arrow background
+    border-top: 9px outset transparent;
+    border-bottom: 9px solid $white;
+  }
+}
+
+.popover.right {
+  &:before, &:after{ // Arrow
+    left: auto;
+    right: 8px;
+  }
+}
+
+.popover.left {
+  &:before, &:after{ // Arrow
+    right: auto;
+    left: 18px;
+  }
+}
+
+// Popounders
+.has-popover, .has-popunder {
+  &.popunder {
+    .popover {
+      top: 100%;
+      margin-top: 0;
+      z-index: 98;
+      left: 0;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      box-shadow: none;
+      &:before, &:after {
+        content: none !important;
+      }
+    }
+  }
+}
+
+.has-popunder:hover {
+    .popover {
+      visibility: visible !important;
+      opacity: 1 !important;
+      display: block;
+    }
+}
+
+// #Children
+// ==================================================
+
+// A basic styling for list elements inside a ul.popover
+.popover > li, .popover-settings > li, .popover-mini-nav > li {
+  padding: 0 12px;
+  margin: 0;
+  text-shadow: 0 1px white;
+  &.sep {
+    margin-top: 4px;
+    padding-top: 4px;
+    border-top: 1px solid #b4bbce;
+    box-shadow: inset 0 1px rgba(white, .6);
+  }
+  a {
+    display: block;
+    position: relative;
+    margin: 0 -13px;
+    padding: 8px 20px 8px 12px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    float: left;
+    clear: left;
+    width: 200px;
+    &:hover {
+      color: $tan;
+      background: $tan4;
+      &:after { display: block; }
+    }
+    &:after {
+      content: '';
+      display: none;
+      position: absolute;
+      top: 50%;
+      right: 5px;
+      margin-top: -4px;
+      width: 0;
+      height: 0;
+      border: 4px solid transparent;
+      border-left-color: lighten(white, 20%);
+      border-left-color: rgba(white, .4);
+    }
+  }
+}
+
+
+.popover.share-popover {
+  width: 240px;
+  // ul {
+  //   padding: 10px 10px 0 20px;
+  // }
+}
+
+.popover .share-this {
+  margin: 12px 16px 0;
+  li a {
+    height: 36px;
+    width: 36px;
+    line-height: 36px;
+  }
+}
+
+// #Options
+// ==================================================
+
+.popover.hint {
+  width: 300px;
+  p {
+    padding: 5px 10px 0;
+    font-size: .8em;
+    @include font-sans-serif;
+  }
+}
+
+.popover.settings.right {
+  &:before, &:after{ // Arrow
+    left: auto;
+    right: 13px;
+  }
+  ul {
+    margin-bottom: 0;
+  }
+}
+
+
+// #TODO Find a home for this
+.hint > p {
+  cursor: pointer;
+  @include font-serif;
+  color: $grey2;
+  font-size: .8em;
+  margin: 0 0 5px;
+}
+
+// #BrowserFixes
+// ==================================================
+
+.ie8 #masthead {
+  .popover {
+    background-color: $white !important;
+  }
+}
+.ie8 .popover {
+  background-color: $tan !important;
+  &.settings {
+    &.below {
+      background-color: $white !important;
+      &:before { // Arrow border
+        border-top: 9px outset transparent;
+        border-bottom: 9px solid $white;
+      }
+      &:after { // Arrow background
+        border-top: 0 !important;
+        border-bottom: 0 !important;
+      }
+    }
+    &:before { border-top: 0 solid $tan3; } // Arrow border
+    &:after { border-top: 0 solid $tan; } // Arrow background
+  }
+}

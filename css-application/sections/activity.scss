@@ -1,0 +1,491 @@
+﻿	/* Table of Content
+	==================================================
+	  #Banners
+	  #ActivitySection
+	  #Celebrations
+	  #NewTopic
+	  #OnFire
+	  #Short
+	  #Micro
+	  #BrowserFixes
+	  */
+
+
+@mixin huge-header {
+  font-size: 4em;
+  text-transform: uppercase;
+  line-height: 1em;
+  margin: 20px 0 5px;
+  @include font-display;
+  @include media($mobile) {
+    font-size: 2.75em;
+  }
+}
+
+	/* #ActivitySection
+	================================================== */
+
+#activity {
+  &> header {
+    @include clearfix;
+    border-bottom: 4px solid $tan3;
+    padding: 20px 0 0;
+    margin: 0 20px;
+    h1 {
+      float: left;
+      margin: 6px 0 5px;
+      color: $tan6;
+      @include css-hyphens(none);
+    }
+    nav {
+      float: right;
+      margin-right: 10px;
+      ul {
+        @extend .tabs;
+      }
+    }
+  }
+  overflow: hidden;
+  background: $white;
+  border: 1px solid $tan4;
+  border-bottom: none;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  @include span-columns(7 of 12);
+  @include media($tablet) {
+    @include span-columns(12 of 12);
+  }
+  @include media($mobile) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  article {
+    position: relative;
+    padding: 20px 20px 0;
+    @include media($mobile) {
+      padding: 20px 20px 0;
+    }
+    article {
+      padding: 5px 0 15px;
+      .user-image {
+        display: none;
+      }
+    }
+  }
+
+  article {
+    position: relative;
+    &> .wrap { 
+      margin-left: 80px;
+      min-height: 70px;
+      @include media($mobile) {
+        margin-left: 0;
+      }
+    }
+    header {
+      margin-right: 100px;
+      @include media($mobile) {
+        margin-top: 0;
+        margin-left: 52px;
+        min-height: 40px;
+        margin-right: 40px;
+      }
+    }
+    h1 {
+      margin-bottom: 5px;
+      font-size: 1em;
+      line-height: 1.25em;
+      @include css-hyphens(none);
+    }
+    article {
+      h1 {
+        font-size: 1.5em !important;
+        line-height: 1.2em;
+        font-weight: bold;
+        margin: 0 0 10px;
+        @include css-hyphens(none);
+        a {
+          color: $grey6;
+          &:hover {
+            color: $grey5;
+          }
+        }
+      }
+      h2 {
+        margin-top: 0;
+        font-size: 1.1em;
+        @include css-hyphens(none);
+        a {
+          color: $secondary;
+          &:hover { color: $primary; }
+        }
+      }
+    }
+    &:after {
+      content: "";
+      padding-top: 10px;
+      display: block;
+      width: 100%;
+      border-bottom: 1px solid $tan4;
+    }
+    article:after {
+      content: none;
+    }
+    .forward {
+      .meta {
+        margin: 5px 0 0 0;
+        position: relative;
+        float: none;
+        overflow: auto;
+      }
+    }
+    .flag {
+      float: right;
+      margin: 0;
+      color: $grey2;
+      &:hover {
+        color: $primary;
+      }
+    }
+    p {
+      margin-bottom: 5px;
+      @include css-hyphens(none);
+    }
+    &> .user-image {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      @include media($mobile) {
+        width: auto;
+        max-width: 42px;
+        height: auto;
+        max-height: 42px;
+        left: 20px;
+        top: 24px;
+      }
+    }
+    .time {
+      position: absolute;
+      top: 17px;
+      right: 20px;
+      color: $grey2;
+      font-size: .9em;
+      font-weight: bold;
+      @include media($mobile) {
+        top: 2px;
+      }
+    }
+    .has-media {
+      @include clearfix;
+      margin-bottom: 10px;
+      .image, p {
+        width: 70%;
+        float: left;
+      }
+      .image {
+        width: 28%;
+        margin-right: 2%;
+        position: relative;
+        img {
+          width: 100%;
+        }
+      }
+      @include media($mobile) {
+        .image {
+          overflow: hidden;
+          height: 50px;
+          margin-bottom: 10px;
+          img {
+            margin-top: -40%;
+          }
+        }
+        .image, p {
+          width: 100%;
+          float: none;
+        }
+        p {
+        }
+      }
+    }
+  }
+  .user-image {
+    width: auto;
+    max-width: 62px;
+    height: auto;
+    max-height: 62px;
+    overflow: hidden;
+  }
+  .user-name {
+    font-weight: bold;
+  }
+
+  .load-more {
+    @extend button.grey;
+    display: block;
+    margin: 20px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    &:after {
+      opacity: 0;
+    }
+    span{
+      display: none;
+    }
+    &.loading {
+      font-size: 0px;
+      line-height: 0px;
+      height: 43px;
+      position: relative;
+      span {
+        display: block;
+        font-size: 30px;
+        line-height: 20px;
+        color: #333333;
+        @include animation(spin 2s linear infinite); 
+      }
+    }
+    
+  }
+  .cheer-btn {
+    position: absolute;
+    top: 24px;
+    right: 30px;
+  }
+}
+
+@include keyframes(spin) {
+  from {
+    @include transform(rotate(0deg));
+  }
+  to {
+    @include transform(rotate(360deg));
+  }
+}
+
+	/* #Celebrations
+	================================================== */
+
+  article.celebration, #activity article.celebration, #marquees article.celebration {
+    @extend .icon-implemented-background;
+    background-position: center;
+    background-size: 100% auto;
+    text-align: center;
+    font-size: 1.3em;
+    &:after {
+      padding-top: 20px;
+    }
+    .user-image {
+      position: relative;
+      margin: 0 auto 10px;
+      overflow: auto;
+      left: auto;
+      top: auto;
+    }
+    h1 {
+      @include huge-header;
+    }
+    p {
+      font-size: 1em;
+      margin-bottom: 10px;
+      @include css-hyphens(none);
+    }
+    em {
+      @include font-serif;
+    }
+    a {
+      color: $secondary;
+      &:hover {
+        color: $primary;
+      }
+    }
+    a.user-name {
+      color: $grey3;
+      &:hover {
+        color: $grey4;
+      }
+    }
+    .cheer-btn {
+      position: relative;
+      top: auto;
+      right: auto;
+      margin: 10px auto 0;
+    }
+    .meta {
+      font-size: 1.2em;
+      float: none;
+    }
+  }
+  
+  // Marquee requires some font overrides
+  #marquees article.celebration {
+    z-index: 1;
+    overflow: hidden;
+    &:before, &:after {
+      content: " ";
+      display: block;
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    &:before {
+      @include linear-gradient(top, $blue, $white);
+    }
+    &:after {
+      @extend .icon-implemented-background;
+      background-position: center;
+      background-size: auto 100%;
+      background-repeat: repeat-x;
+    }
+    position: relative;
+    color: $grey5;
+  }
+
+  // #marquees article.sharing, article.sharing {
+  //   &:after {
+  //     @extend .icon-share-background;
+  //   }
+  //   h1 {
+  //     color: $grey5;
+  //     text-shadow: none;
+  //   }
+  //   h2 {
+  //     color: $secondary;
+  //     font-weight: bold;
+  //     font-size: 1.2em;
+  //     margin: 30px 0 20px;
+  //   }
+  //   .share {
+  //     border-top: none;
+  //   }
+  //   @media only screen and (max-width: 1240px) {
+  //     h1 {
+  //       font-size: 3em;
+  //     }
+  //   }
+  //   @include media($tablet) {
+  //     h1 {
+  //       font-size: 2.5em;
+  //     }
+  //   }
+  // }
+
+	/* #NewTopic === This may get changed to simply "Topic"
+	================================================== */
+
+  #activity article.project {
+    border-top: 4px solid $tan4;
+    border-bottom: 1px solid $tan4;
+    @include linear-gradient(top, $white, $grey);
+    &:after {
+      content: none;
+    }
+    // Cleanest way to "remove" border from topics above this.
+      position: relative;
+      top: -1px;
+    //
+    &.has-banner {
+      border-top-color: $primary;
+    }
+  }
+
+	/* #OnFire === This may get changed to simply "Topic"
+	================================================== */
+
+#activity article.on-fire {
+  @include linear-gradient(top, $white, lighten($secondary, 40%));
+}
+
+#activity article.participants {
+  @extend .has_cheer;
+  .user-grid {
+    margin: 10px 0;
+    height: 40px;
+    overflow: hidden;
+    .user-image {
+      width: 40px;
+      height: 40px;
+    }    
+  }
+}
+
+	/* #Short
+	================================================== */
+
+#activity article.short {
+}
+
+	/* #Micro
+	================================================== */
+
+#activity article.micro {
+  @extend .has_cheer;
+  h1 {
+    font-size: 1.4em;
+    padding: 20px 0 0;
+    @include media($mobile) {
+      padding: 0;
+    }
+  }
+}
+
+	/* #ProjectLaunched
+	================================================== */
+
+#activity article.project-launched {
+  text-align: center;
+  font-size: 1.3em;
+  padding-bottom: 10px;
+  &:after {
+    content: none;
+  }
+  h1 {
+    @include huge-header;
+  }
+  img {
+    width: 100%;
+  }
+  .time {
+    position: relative;
+    top: auto;
+    right: auto;
+    @include font-serif;
+    color: $grey4;
+  }
+}
+
+.share-large {
+  margin: 15px 0 0;
+  padding: 15px;
+  border-top: 1px solid $grey;
+  ul {
+    display: table;
+    text-align: center;
+    margin: 0 auto;
+  }
+  li {
+    display: table-cell;
+    float: none;
+  }
+  li a {
+    margin: 10px;
+    width: 66px;
+    height: 66px;
+    font-size: 36px;
+    line-height: 62px;
+    color: $white !important;
+    @include media($tablet) {
+      width: 42px;
+      height: 42px;
+      font-size: 24px;
+      line-height: 38px;
+      margin: 10px 4px;
+    }
+  }
+}
+
+	/* #BrowserFixes
+	================================================== */

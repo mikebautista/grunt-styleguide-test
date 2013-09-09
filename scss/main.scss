@@ -1,0 +1,35 @@
+﻿
+/* This comment is
+ * several lines long.
+ * since it uses the CSS comment syntax,
+ * it will appear in the CSS output. */
+
+
+
+$blue: #3bbfce;
+$margin: 16px;
+
+
+.content-navigation {
+  border-color: $blue;
+  color: darken($blue, 9%);
+}
+
+/* border */
+
+.border {
+  padding: $margin / 2;
+  margin: $margin / 2;
+  border-color: $blue;
+}
+
+/* sample for using background images */
+/* 
+	!!! please use absolute url to the image !!!
+	Sample : /v3112874ae4c97ba6b1f5b355cd1cdb96/Content/Responsive/Images/title-background.png
+	After the project build the hash tag will be added to the begin of the url for the Cloud front storage automatically
+
+ */
+.somecontroltitle{
+	background: url('/v3112874ae4c97ba6b1f5b355cd1cdb96/Content/Responsive/Images/title-background.png') no-repeat left top;
+}

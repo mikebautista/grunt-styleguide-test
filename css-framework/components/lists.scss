@@ -1,0 +1,65 @@
+﻿/*
+Lists
+
+Here are some simple tabs to make an example.
+
+Styleguide 3.
+*/
+
+/*
+List styles.
+
+Here are some simple tabs to make an example.
+
+Markup:
+<ul class="{$modifiers}">
+    <li>Foo</li>
+    <li>Bar</li>
+    <li>Foobar</li>
+</ul>
+
+.bulleted - Colored Bullet
+.scores - Used for sccoreboards
+
+Styleguide 3.1.
+*/
+
+// Table of Content
+// ==================================================
+// #BrowserFixes
+// #Mixins
+// #Base
+// #Exceptions
+
+// #Base
+// ==================================================
+
+ul.bulleted, ol.bulleted {
+  border-top: 1px solid $grey2;
+  padding: 0 0 5px;
+  margin: 15px 0;
+  li {
+    padding: 10px 0;
+    margin: 0;
+    border-bottom: 1px solid $grey2;
+    font-size: .9em;
+    font-weight: bold;
+    padding-left: 1em; // for psuedo bullets
+    text-indent: -.7em; // for psuedo bullets
+  }
+  // psuedo bullet so that we can control the color
+  li:before {
+      content: "• ";
+      color: $primary;
+  }
+}
+
+ol.scores, ul.scores {
+  list-style-position: inside;
+  margin-left: 0;
+  span {
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: .9em;
+  }
+}

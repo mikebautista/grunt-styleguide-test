@@ -1,0 +1,285 @@
+﻿@mixin colored-circle-button($selector, $color1) {
+  // This has to be used within a nested element - in this case it's in the social-btn class
+  &.#{$selector} {
+    border: 1px solid $color1;
+    @include radial-gradient(70% 30%, circle cover, $color1, lighten($color1, 10%));
+    &:hover {
+      @include radial-gradient(60% 40%, circle cover, $color1, darken($color1, 10%));
+    }
+    &:active {
+      @include radial-gradient(30% 70%, circle cover, $color1, lighten($color1, 20%));
+    }
+  }
+}
+
+// #Base
+// ==================================================
+
+.circle-btn {
+  display: block;
+  text-align: center;
+  width: 60px;
+  height: auto;
+  font-size: .9em;
+  color: $grey3;
+  span {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    border-radius: 50%;
+    display: block;
+    position: relative;
+    @include radial-gradient(70% 30%, circle cover, $grey, lighten($grey2, 3%));
+    border: 1px solid $grey3;
+    box-shadow: 0 1px 1px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.3); // drop shadow and inner shadow
+  }
+  &:hover span {
+    @include radial-gradient(60% 40%, circle cover, $grey, $grey2);
+  }
+  &:active span {
+    @include radial-gradient(30% 70%, circle cover, $grey, lighten($grey2, 3%));
+    box-shadow: 0 0 3px $grey3 inset;
+  }
+  &.on {
+    span {
+      @include radial-gradient(70% 30%, circle cover, $primary, lighten($primary, 3%));
+      border: 1px solid $secondary;
+    }
+    &:hover span {
+      @include radial-gradient(60% 40%, circle cover, $primary, $primary);
+    }
+    &:active span {
+      @include radial-gradient(30% 70%, circle cover, $primary, lighten($primary, 3%));
+    }    
+  }
+}
+
+// A smaller version of the circle btn used for slider pagination in sidebar
+// .dot-btn {
+//   display: block;
+//   text-align: center;
+//   height: auto;
+//   font-size: .9em;
+//   color: $grey3;
+//   width: 30px;
+//   height: 30px;
+//   border-radius: 50%;
+//   border: 1px solid $grey3;
+//   text-indent: -9999px;
+//   @include radial-gradient(70% 30%, circle cover, $grey, lighten($grey2, 3%));
+//   box-shadow: 0 1px 1px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.3); // drop shadow and inner shadow
+//   behavior: url(/Content/Responsive/css-framework/vendor/PIE.htc);
+//   &:hover {
+//     @include radial-gradient(60% 40%, circle cover, $grey, $grey2);
+//   }
+//   &:active {
+//     @include radial-gradient(30% 70%, circle cover, $grey, lighten($grey2, 3%));
+//     box-shadow: 0 0 3px $grey3 inset;
+//   }
+//   &.active {
+//     & {
+//       @include radial-gradient(70% 30%, circle cover, $primary, lighten($primary, 3%));
+//       border: 1px solid $secondary;
+//     }
+//     &:hover {
+//       @include radial-gradient(60% 40%, circle cover, $primary, $primary);
+//     }
+//     &:active {
+//       @include radial-gradient(30% 70%, circle cover, $primary, lighten($primary, 3%));
+//     }    
+//   }
+// }
+
+/*
+Dot Button
+
+
+Our marquee dot button. Used for marquee navigation.
+
+Markup Note: Markup can vary depending on placement.
+
+
+Markup:
+<button class="dot-btn {$modifiers}"></button>
+
+:hover          - Subtle hover highlight.
+.active         - Active dot in the marquee
+
+Styleguide 1.2.
+*/
+
+.dot-btn {
+  display: block;
+  text-align: center;
+  height: auto;
+  font-size: .9em;
+  color: $grey3;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid $grey3;
+  text-indent: -9999px;
+  @include radial-gradient(70% 30%, circle cover, $grey, lighten($grey2, 3%));
+  box-shadow: 0 1px 1px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.3); // drop shadow and inner shadow
+  //behavior: url(/Content/Responsive/css-framework/vendor/PIE.htc);
+  &:hover {
+    @include radial-gradient(60% 40%, circle cover, $grey, $grey2);
+  }
+  &:active {
+    @include radial-gradient(30% 70%, circle cover, $grey, lighten($grey2, 3%));
+    box-shadow: 0 0 3px $grey3 inset;
+  }
+  &.active {
+    & {
+      @include radial-gradient(70% 30%, circle cover, $primary, lighten($primary, 3%));
+      border: 1px solid $secondary;
+    }
+    &:hover {
+      @include radial-gradient(60% 40%, circle cover, $primary, $primary);
+    }
+    &:active {
+      @include radial-gradient(30% 70%, circle cover, $primary, lighten($primary, 3%));
+    }    
+  }
+}
+
+// A cheer btn - this is removed from sprint 3 but will probably be re-added
+.cheer-btn {
+  @extend .circle-btn;
+  span {
+    width: 40px;
+    height: 40px;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      @extend .icon-grey_announcement;
+      background-position: center;
+      background-size: 70% auto;
+    }
+  }
+}
+
+.has_cheer {
+  .wrap {
+    margin-right: 80px;
+  }
+}
+
+
+// The close button for modals and dropdowns
+
+article.open {
+  .close-btn {
+    display: block;
+  }
+}
+
+.close-btn {
+  cursor: pointer;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  text-align: center;
+  height: 24px;
+  width: 24px;
+  box-shadow: 0 0 3px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.3);
+  display: none;
+  border-radius: 50%;
+  background: $white;
+  color: $secondary;
+  //behavior: url(/Content/Responsive/css-framework/vendor/PIE.htc);
+  span {
+    line-height: 20px;
+    vertical-align: middle;
+    &.icon_font_angle-arrow-down {
+      padding-top: 3px;
+    }
+  }
+}
+
+/*
+Social Buttons
+
+This is our social button network set. 
+
+These are more than likely going to in sets of five and will vary in size depending on placement.
+
+
+Markup:
+<ul class="share-this" share-this="">   
+    <li>
+        <a title="Share on Facebook" class="mm-icon facebook icon_font_facebook" href=""></a>
+    </li>  
+    <li>
+        <a title="Share on Twitter" class="mm-icon twitter icon_font_twitter" href=""></a>
+    </li>  
+    <li>
+        <a title="Share on Google+" class="mm-icon google-plus icon_font_google-plus" href=""></a>
+    </li>   
+    <li>
+        <a title="Share on LinkedIn" class="mm-icon linkedin icon_font_linkedin" href=""></a>
+    </li>   
+    <li>
+        <a  title="Share via Email" class="mm-icon email icon_font_mail" href=""></a>
+    </li>
+</ul>
+
+Styleguide 1.3.
+*/
+
+.social-btn {
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  line-height: 30px;
+  color: $white;
+  width: 32px;
+  height: 32px;
+  margin: 0 5px 0 0;
+  border-radius: 50%;
+  display: block;
+  position: relative;
+  //behavior: url(/Content/Responsive/css-framework/vendor/PIE.htc);
+  @include radial-gradient(70% 30%, circle cover, $grey, lighten($grey2, 3%));
+  border: 1px solid $grey3;
+  box-shadow: 0 1px 1px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.3);
+  &.large {
+    font-size: 31px;
+    line-height: 38px;
+    color: $white;
+    width: 40px;
+    height: 40px;
+  }
+  &:hover {
+    @include radial-gradient(60% 40%, circle cover, $grey, $grey2);
+    color: $white;
+  }
+  &:active {
+    @include radial-gradient(30% 70%, circle cover, $grey, lighten($grey2, 3%));
+    box-shadow: 0 0 3px $grey3 inset;
+  }
+  @include colored-circle-button(facebook, $facebook);
+  @include colored-circle-button(twitter, $twitter);
+  @include colored-circle-button(google-plus, $google);
+  @include colored-circle-button(linkedin, $linkedin);
+  @include colored-circle-button(email, $tan5);
+}
+
+// #Exceptions
+// ==================================================
+
+// Small tweaks for how social buttons are styled in share-this popovers and such
+.share-this {
+  @include clearfix;
+  margin: 0;
+  li {
+    float: left;
+    a {
+      @extend .social-btn;
+    }
+  }
+}

@@ -1,0 +1,141 @@
+﻿// TODO: write documentation and sassify.
+
+// Popovers
+//
+// Popovers can be used as tooltips or as a form of modal to reveal secondary interactions.
+//
+// Popovers get removed from the DOM and repositioned as a direct child of the <body> via JS.
+// This helps ensure that they don't get cropped by their parent elements overflow:hidden; attribute
+// and allow for smart positioning.
+// Markup Note: Actual elements don't have to be divs.
+// 
+// Markup:
+// <div class="popover {$modifiers}">Content</div>
+//
+// .below          - Lives under the target element with arrow facing up.
+// .right          - Lives to the right of the parent element with arrow on left side.
+// .left           - Lives to the left of the parent element with arrow on right side.
+// .below.left     - Below + Left
+// .below.right    - Below + Left
+// .popunder .popover - When you add a class of "popunder" to the has-popover element, the popover has no arrow and a flat top like Kid (from Kid N' Play)
+//
+// Styleguide 3.1
+
+// Table of Content
+// ==================================================
+// #Base
+// #Children
+// #Options
+
+// #Base
+// ==================================================
+
+.fade {
+  opacity: 0;
+  @include transition(opacity 0.15s linear);
+  &.in {
+    opacity: 1;
+  }
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 10090;
+  background-color: #333333;
+  &.fade {
+    opacity: 0;
+  }
+  &, &.fade.in {
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+  }
+}
+.modal {
+  width: 50%; 
+  height: auto; 
+  width: 600px; 
+  min-height: 30px; 
+  background-color: rgb(255, 255, 255);
+  border-radius: 4px 4px 4px 4px;
+  padding: 35px 35px 25px 35px;
+  top: 10%; 
+  left: 50%; 
+  margin-left:-300px; 
+  position: fixed; 
+  display: block; 
+  z-index: 10091;
+  h3 {
+    @include font-display;
+    font-size: 60px;
+    color: $secondary;
+    text-transform: uppercase;
+    @include css-hyphens(none);
+
+    @media screen and (max-width: 767px) {
+      & {
+        font-size: 30px;
+        margin-bottom: 2px;
+      }
+    }
+  }
+  .warningMsg {
+    border-radius: 4px 4px 4px 4px;
+    border: 1px solid #ffbf00;
+    background-color: #fff5e5;
+    padding: 10px;
+    color: #333333;
+    font-size: 14px;
+    font-weight: normal;
+  }
+  .warning_buttons {
+    text-align: right;
+  }
+  .warning_buttons .button {
+    width: 25%;
+    padding: 5px;
+    &:first-child {
+      margin-right: 10px;
+    }
+  }
+  .warning_buttons .grey {
+    width: 15%;
+  }
+  
+  @media screen and (max-width: 767px) {
+    & {
+      width: 94%;
+      margin-left:-47%;
+      top: 10%;
+      border-radius: 4px 4px 4px 4px;
+      padding: 10px;
+    }
+    .warning_buttons .button {
+      width: 100%;
+      &:first-child {
+        margin-bottom: 10px;
+      }
+    }
+  }
+  &.contentReview {
+    p {
+      text-align: center;
+      margin: 10px 0 0 0;
+    }
+  }
+  &.auth {
+    text-align: center;
+    color: #999999;
+    font-size: 16px;
+    a {
+      color: $primary;
+      font-size: 20px;
+      margin: 10px 0;
+      display: block;
+    }
+  }
+}

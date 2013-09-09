@@ -1,0 +1,173 @@
+﻿// Media Uploads
+//
+// Media uploads for idea submissions and such.
+// Currently not implemented.
+//
+
+// Table of Content
+// ==================================================
+
+.video-overlay {
+  position: absolute;
+  display: block;
+  z-index: 2;
+  content: " ";
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  @extend .icon-white_play;
+  background-position: center center;
+  background-size: 40px auto;
+}
+
+.dropbox {
+  background-color: rgba(0,0,0,0.05);
+  box-shadow: inset 0 0 6px 4px rgba(0,0,0,0.05);
+  padding: 20px 0;
+  .wrap {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .single {
+    margin: 0 3.5%;
+    padding: 0 0 8px;
+    float: left;
+    width: 43%;
+    &:nth-child(odd) {
+      margin: 0 2% 0 5%;
+    }
+    &:nth-child(even) {
+      margin: 0 5% 0 2%;
+    }
+  }
+  .single.video {
+    .preview {
+      position: relative;
+    }
+    .image {
+      &:after {
+        @extend .video-overlay;
+      }
+    }
+  }
+  .single.image .preview {
+    .upload-helpers {
+      @extend .icon-grey_image;
+    }
+  }
+  .single.video .preview {
+    .upload-helpers {
+      @extend .icon-grey_play;
+    }   
+  }
+  .ready {
+    // This is an input that has the content (images,etc) and is ready to be uploaded.
+    input.caption, .remove-btn { display: block; }
+    .upload-helpers { display: none; }
+    input[type=file] { height: 0; }
+    .preview { 
+      cursor: auto; 
+      background-color: $black;
+    }
+  }
+  .preview {
+    @extend .set-ratio;
+    background-color: lighten($grey, 2%);
+    border: 5px solid $white;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0px 4px 5px rgba(0,0,0,0.05);
+    @media screen and (max-width: 1079px) and (min-width: 769px), (max-width: 520px) {
+      background-position: center 30px;
+    }
+    &:hover {
+      .upload-helpers p {
+        color: $primary;
+      }
+    }
+    .upload-helpers {
+      background-position: center top;
+      font-weight: bold;
+      font-size: 1.3em;
+      padding-top: 25px;
+      margin-top: 10px;
+      text-align: center;
+      color: $grey3;
+      @media screen and (max-width: 1079px) and (min-width: 769px), (max-width: 520px) {
+        margin-top: 0;
+        font-size: 1em;
+        line-height: 1em;
+      }
+      p { margin: 0; }
+    }
+    .image {
+      position: absolute;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      img {
+        position: relative;
+        height: 100%;
+      }       
+    }
+  }
+  small {
+    font-size: .65em;
+    font-weight: normal;
+  }
+  input.caption {
+    // negate all default input styles (maybe this should be it's own class that we extend)
+    display: none;
+    background: none;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+
+    margin-top: 5px !important;
+    padding: 5px 4px;
+    &:focus {
+      background-color: rgba(255,255,255,0.5);
+    }
+  }
+  .remove-btn {
+    font-size: 10px;
+    position: absolute;
+    top: 2px;
+    right: 6px;
+    color: $secondary;
+    display: none;
+    cursor: pointer;
+  }
+  .has-popover .popover {
+    width: 230px;
+    left: -30px;
+    top: 75%;
+    &:before, &:after {
+      left: 50%;
+      margin-left: -10px;
+    }
+    p {
+      margin: 10px;
+      font-size: .8em;
+      word-wrap: break-word;
+    }
+    input {
+      width: 210px !important;
+      margin: 10px !important;
+    }
+  }
+  input[type=file] {
+    opacity: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    z-index: 2;
+  }
+}

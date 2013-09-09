@@ -1,0 +1,253 @@
+﻿// Rate Widget
+//
+// Our three-star (plus neutral slash) rating widget. Used to rate ideas.
+// 
+// Markup: 
+// <div class="rate-this">
+//   <div class="rating has-popover">
+//     15 <span class="icon_font_star icon"></span>
+//     <ul class="popover ratings">
+//       <li><em>3 <span class="icon icon_font_user"></span></em> Love it! <div class="wrap"><span class="icon_font_star icon"></span><span class="icon_font_star icon"></span><span class="icon_font_star icon"></span></div></li>
+//       <li><em>2 <span class="icon icon_font_user"></span></em> Like it. <div class="wrap"><span class="icon_font_star icon"></span><span class="icon_font_star icon"></span></div></li>
+//       <li><em>0 <span class="icon icon_font_user"></span></em> It's okay. <div class="wrap"><span class="icon_font_star icon"></span></span></div></li>
+//       <li><em>1 <span class="icon icon_font_user"></span></em> Neutral. <div class="wrap"><span class="icon icon_font_neutral"></span></li>
+//     </ul>
+//   </div>
+//   <div class="action">
+//     <ul class="readable">
+//       <li class='first'>Rate this idea:</li>
+//       <li>Neutral.</li>
+//       <li>It's Okay.</li>
+//       <li>I Like it.</li>
+//       <li>I Love it!</li>
+//     </ul>
+//     <div class="stars">
+//       <div class="gradient-wrap"><div class="gradient"></div></div>
+//       <a href="#" title="Neutral."><span class="icon icon_font_neutral"></span></a>
+//       <a href="#" title="It's Okay."><span class="icon_font_star icon"></span></a>
+//       <a href="#" title="Like it."><span class="icon_font_star icon"></span></a>
+//       <a href="#" title="Love It!"><span class="icon_font_star icon"></span></a>
+//     </div>
+//   </div>
+// </div>
+//
+// Styleguide 4.1
+
+// Table of Content
+// ==================================================
+// #BrowserFixes
+// #Base
+
+// #BrowserFixes
+// ==================================================
+// None, Yet.
+
+// #Base
+// ==================================================
+
+.rate-this {
+  @include clearfix;
+  position: relative;
+  padding: 0;
+  margin: 0 0 10px;
+  @include background-image(linear-gradient(bottom, $grey2 -40%, $white 100%)); // gradient overlay
+  border: 1px solid $grey2;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.3); // drop shadow and inner shadow
+  color: $grey6;
+  font-size: .9em;
+  .icon { margin-top: 0; }
+  .rating {
+    float: left;
+    font-size: 1.4em;
+    border-right: 1px solid $grey2;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    padding: 0 12px;
+    height: 38px;
+    line-height: 38px;
+    background: $white;
+    width: 84px;
+    position: absolute;
+    text-align: center;
+    left: 0;
+    top: 0;
+    .icon {
+      font-size: .7em;
+      vertical-align: top;
+    }
+  }
+  .action {
+    @include clearfix;
+    padding: 0;
+    margin-left: 84px;
+    overflow: hidden;
+    height: 38px;
+    position: relative;
+    .readable {
+      margin: 0;
+      width: 100px;
+      position: absolute;
+      z-index: 2;
+      height: 100%;
+      line-height: 38px;
+      padding: 0 0 0 12px;
+      display: block;
+      @include transition(color 0.35s ease-out);
+      @media only screen and (max-width: 959px) and (min-width: 768px), (max-width: 559px) {
+        display: none;
+      }
+      @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+        display: block;
+      }
+      li {
+        float: left;
+        display: none;
+        margin: 0;
+        height: 100%;
+        line-height: 36px;
+        font-weight: bold;
+        &.first {
+          display: block;
+          @include font-serif;
+          font-weight: normal;
+        }
+      }
+    }
+    &.hover {
+      .readable { color: $white !important; }
+      .stars {
+        a {
+          color: $grey2;
+          cursor: pointer;
+          &.white { color: $white !important;
+            @media only screen and (max-width: 480px) {
+              color: $primary !important; /*white*/
+            }
+          }
+        }
+      }
+    }
+    &.rated {
+      .stars a { color: $grey2; }
+      .readable { color: $primary; }
+    }
+    .gradient-wrap {
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: absolute;
+      overflow: hidden;
+      top: 0;
+      left: -100px;
+      padding-left: 100px;
+      @include box-sizing(content-box);
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+    }
+    .gradient {
+      background-color: $secondary;
+      @include background-image(linear-gradient(left, $primary 0%, $secondary 100%)); // gradient overlay
+      @include transition(width 0.35s ease-out);
+      position: relative;
+      width: 0;
+      left: -100px;
+      height: 100%;
+      display: block;
+    }
+    @media only screen and (max-width: 680px) {
+      .gradient-wrap, .gradient {
+        display: none;
+      }
+    }
+    div.stars {
+      margin-left: 100px;
+      font-size: 1.4em;
+      text-align: center;
+      position: relative;
+      display: block;
+      height: 100%;
+      @media only screen and (max-width: 959px) and (min-width: 768px), (max-width: 559px) {
+        margin-left: 0;
+      }
+      @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+        margin-left: 100px;
+      }
+      a {
+        width: 25%;
+        height: 100%;
+        display: block;
+        line-height: 36px;
+        float: left;
+        position: relative;
+        margin: 0;
+        color: $grey3;
+        @include transition(color 0.35s ease-out);
+        span {
+          position: relative;
+        }
+        &.selected {
+          color: $primary;
+        }
+      }
+    }
+  }
+}
+
+.popover.ratings {
+  text-align: left;
+  font-size: .85em;
+  font-weight: bold;
+  li {
+    color: $grey5;
+    padding: 6px 12px;
+    border-bottom: 1px solid $grey;
+    &:last-child {
+      border-bottom: none;
+    }
+    .wrap {
+      display: inline-block;
+      width: 60px;
+      float: right;
+      margin-left: 10px;
+    }
+    .icon {
+      color: $primary;
+      margin-right: 2px;
+      margin-left: 2px;
+    }
+    em {
+      display: inline-block;
+      width: 30px;
+      margin-right: 2px;
+      text-align: center;
+    }
+    .icon_font_user {
+      font-size: .6em;
+      color: $grey2;
+    }
+  }
+}
+
+ /* #BrowserFixes
+ ================================================== */
+.ie8 .rate-this {
+  .action{
+    .gradient {
+      display: inline-block;
+      position: absolute;
+      left: 0;
+    }
+  }
+  div.stars {
+    a {
+      &.white { color: $white !important };
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+  .icon {
+    margin-top: -1px;
+  }
+}

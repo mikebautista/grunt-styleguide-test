@@ -1,0 +1,200 @@
+#login, #sign-up {
+	section#main {
+		padding-top: 100px;
+		.form-container {
+			padding:40px;
+			padding-bottom: 0px;
+			width: 100%;
+			max-width: 470px;
+			float: none;
+			margin: 0 auto 39px;
+			border-bottom-left-radius: 5px;
+			border-bottom-right-radius: 5px;
+			border-bottom: 1px solid #d6d1be;
+			@media only screen and (max-width: 480px) {
+				padding: 10px;
+				border-bottom-left-radius: 0;
+				border-bottom-right-radius: 0;
+			}
+		}
+		h3 {
+		    @include font-display;
+		    font-size: 60px;
+		    color: $secondary;
+		    text-transform: uppercase;
+		    @include css-hyphens(none);
+
+		    @media screen and (max-width: 480px) {
+		    	text-align: center;
+		        margin-bottom: 20px
+		    }
+		}
+		#seperator {
+			border-top: 4px solid $tan3;
+			margin: 30px 0 6px;
+			text-align: center;
+			font-size: 1.2em;
+			span {
+				background: $white;
+				display: inline-block;
+				padding: 0 6px;
+				position: relative;
+				top: -14px;
+				color: $tan6;
+				font-style: italic;
+			}
+		}
+	}
+}
+
+.form-container {
+	form {
+		width: 100%;
+		input {
+			width: 100%;
+			margin-bottom: 14px;
+		}
+		.name-inputs {
+			margin-bottom: 0;
+			li {
+				display: inline-block;
+				width: 48%;
+				&:first-child {
+					float: left;
+				}
+				&:last-child {
+					float: right;
+				}
+			}
+		}
+		.more-info-inputs {
+			margin-bottom: 0;
+			li {
+				width: 48%;
+				input {
+					margin-bottom: 14px;
+				}
+				&.postal-code {
+					margin-bottom: 0;
+					input {
+						margin-bottom: 0;
+					}
+				}
+			}
+			.gender {
+				width: 100%;
+				ul {
+					margin: 0;
+					padding: 0;
+					font-size: 1em;
+					color: #777;
+					li {
+						span {
+							padding-right: 20px;
+							font-size: 17px;
+							font-weight: normal;
+						}
+						display: inline-block;
+						float: left;
+						width: auto;
+						input {
+							width: auto;
+						}
+						label {
+							@include font-sans-serif;
+							display: inline;
+							padding-left: 0;
+							padding-right: 20px;
+						}
+					}
+				}
+			}
+		}
+	}
+	.login-btns {
+		ul {
+			margin: 0;
+			padding: 0;
+			li {
+				display: inline;
+			}
+		}
+	}
+	.form-btns {
+		width: 100%;
+		display: block;
+		overflow: hidden;
+		margin-top: 30px;
+		ul {
+			margin: 0;
+			margin-top: 8px;
+			padding: 0;
+			float: left;
+			a {
+				color: $tan6;
+				&:hover {
+					color: $primary;
+				}
+			}
+			li {
+				margin-bottom: 5px;
+			}
+		}
+		input.button {
+			@include font-display;
+			text-transform: uppercase;
+			float: right;
+			width: 40%;
+			line-height: 35px;
+			font-size: 2.5em;
+			font-weight: normal;
+			@media only screen and (max-width: 320px) {
+				margin-top: 30px;
+				width: 100%;
+			}
+			&.create-btn {
+				width: 100%;
+				margin-bottom: 0;
+			}
+
+		}
+	}
+}
+
+.button.login {
+	display: block;
+	font-size: 1.25em;
+	font-weight: normal;
+	&.facebook-btn {
+		width: 100%;
+		line-height: 30px;
+		margin-bottom: 14px;
+
+	}
+	&.google-btn {
+		width: 48%;
+		float: left;
+		line-height: 20px;
+	}
+	&.linkedin-btn {
+		width: 48%;
+		float: right;
+		line-height: 20px;
+	}
+}
+
+#sign-up {
+	.form-container {
+		padding-bottom: 15px !important;
+	}
+	.login-inputs {
+		margin-bottom: 30px;
+	}
+	.form-btns {
+		margin-top: -20px;
+	}
+	.small-text {
+		font-size: .8em;
+		color: $grey3;
+	}
+}

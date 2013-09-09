@@ -1,0 +1,21 @@
+.form-message {
+  background: #fff5e5;
+  border: 1px solid #ffcc33;
+  border-radius: 5px;
+  padding: 15px 10px;
+  margin-bottom: 10px;
+  @include css-hyphens(none);
+  strong {
+    font-weight: bold;
+  }
+  &.error {
+    border-color: #ff5c2d;
+    background: #ffe7d9;
+    strong { color: #ff5c2d; }
+  }
+  &.success {
+    border-color: #6ebe00;
+    background: #edfcd8;
+    strong { color: #6ebe00; }
+  }
+}
