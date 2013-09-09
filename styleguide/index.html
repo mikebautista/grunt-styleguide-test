@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>kss-node Styleguide</title>
+    <meta name="description" content="" />
+    <meta name="generator" content="kss-node" />
+    <link rel="stylesheet" href="public/kss.css" />
+    <link rel="stylesheet" href="public/style.css" />
+    <!--[if lt IE 9]>
+    <script src="public/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body id="kss-node">
+    <div class="kss-wrapper">
+      <div class="kss-sidebar">
+        <div class="kss-sidebar-inner">
+          <header class="kss-header">
+            <h1 class="kss-doc-title"><a href="./">MindMixer Styleguide</a></h1>
+          </header>
+          <nav class="kss-nav">
+            <ul class="kss-menu" data-kss-ref="0">
+              <li class="kss-menu-item"><a href="./"><span class="kss-ref">0</span><span class="kss-name">Overview</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-1.html"><span class="kss-ref">1</span><span class="kss-name">Buttons</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-2.html"><span class="kss-ref">2</span><span class="kss-name">Form Items</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-3.html"><span class="kss-ref">3</span><span class="kss-name">Lists</span></a></li>
+              
+            </ul>
+            
+            
+          </nav>
+        </div>
+      </div>
+      <div class="kss-content">
+        <article class="kss-article">
+          
+          <section id="section-0" class="kss-section kss-overview">
+            <p><strong>Welcome to the MindMixer styleguide.</strong> We use this to keep consistancy between our applications and websites. At MindMixer we use Sass stylesheets and in order to maintain our styles, you must have a general understanding of SCSS syntax.</p>
+
+<h1>Coding Style:</h1>
+
+<ul class="scores">
+    <li>
+        - Use soft-tabs with a two space indent.
+    </li>
+    <li>
+        - Put spaces after : in property declarations.
+    </li>
+    <li>
+        - Put spaces before { in rule declarations.
+    </li>
+    <li>
+        - Use hex color codes #000 unless using rgba.
+    </li>
+    <li>
+        - Because we are building our style guide from the dev.css file Use /* */ for comment blocks (instead of //).
+    </li>
+    <li>
+        - Document styles with KSS.
+    </li>
+</ul>
+
+<p>Here is a good example of syntax:
+</p>
+<div class="kss-markup">
+<pre>
+    <code class="rainbow">
+    /* This is a good example! */
+    .styleguide-format {
+      border: 1px solid #0f0;
+      color: #000;
+      background: rgba(0,0,0,0.5);
+    }
+    </code>
+</pre>
+</div>
+
+<h1>SCSS coding style</h1>
+<p>Any <code>$varaible</code> or <code>@mixen</code> that is used more then once should be moved into the global section.</p>
+<p>All exceptions to a set of rules need to be moved to the section <code>/* #Exceptions */</code> area of the <code>.scss</code> file.</p>
+<p>All words in a class/id need to be separated with a - and not camelCase.</p>
+
+<h1>File System</h1>
+
+<p>We have three main directories that handle our styles
+</p>
+<div class="kss-markup">
+  <pre>
+  <code>
+
+  &ndash; /css-application
+    ∟ /* This area is site based /*
+  &ndash; /css-framework
+    ∟ /components
+    ∟ /globals
+    ∟ /themes
+    ∟ /vendor
+    ∟ base.scss
+  &ndash; /mm-icons
+    ∟ /fonts
+    ∟ /icons
+    ∟ package.json
+  </code>
+  </pre>
+</div>
+
+<p>Within each of these directories are other files that handle styles based on sections and items on the site.
+
+</p>
+<h1>Pixels vs. Ems</h1>
+
+          </section>
+          
+        </article>
+        <footer class="kss-footer">
+          <div>Created using <a href="https://github.com/hughsk/kss-node">kss-node</a> and <a href="https://github.com/htanjo/kss-node-template">kss-node-template</a>.</div>
+        </footer>
+      </div>
+    </div>
+    <script src="public/kss.js"></script>
+    <script src="public/jquery-1.9.1.min.js"></script>
+    <!--[if gt IE 8]><!-->
+    <script src="public/rainbow.min.js"></script>
+    <!--<![endif]-->
+    <script src="public/main.js"></script>
+  </body>
+</html>

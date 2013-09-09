@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>kss-node Styleguide</title>
+    <meta name="description" content="" />
+    <meta name="generator" content="kss-node" />
+    <link rel="stylesheet" href="public/kss.css" />
+    <link rel="stylesheet" href="public/style.css" />
+    <!--[if lt IE 9]>
+    <script src="public/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body id="kss-node">
+    <div class="kss-wrapper">
+      <div class="kss-sidebar">
+        <div class="kss-sidebar-inner">
+          <header class="kss-header">
+            <h1 class="kss-doc-title"><a href="./">MindMixer Styleguide</a></h1>
+          </header>
+          <nav class="kss-nav">
+            <ul class="kss-menu" data-kss-ref="1">
+              <li class="kss-menu-item"><a href="./"><span class="kss-ref">0</span><span class="kss-name">Overview</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-1.html"><span class="kss-ref">1</span><span class="kss-name">Buttons</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-2.html"><span class="kss-ref">2</span><span class="kss-name">Form Items</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-3.html"><span class="kss-ref">3</span><span class="kss-name">Lists</span></a></li>
+              
+            </ul>
+            
+            <ul class="kss-menu-child">
+              
+              
+              
+              
+              
+              <li class="kss-menu-item"><a href="#section-1.1"><span class="kss-ref">1.1</span><span class="kss-name">Basic Button</span></a></li>
+              
+              
+              
+              <li class="kss-menu-item"><a href="#section-1.2"><span class="kss-ref">1.2</span><span class="kss-name">Dot Button</span></a></li>
+              
+              
+              
+              <li class="kss-menu-item"><a href="#section-1.3"><span class="kss-ref">1.3</span><span class="kss-name">Social Buttons</span></a></li>
+              
+              
+            </ul>
+            
+          </nav>
+        </div>
+      </div>
+      <div class="kss-content">
+        <article class="kss-article">
+          
+          
+          <section id="section-1" class="kss-section kss-depth-1">
+            <h1 class="kss-title"><span class="kss-ref">1</span> Buttons</h1>
+            
+            
+            <div class="kss-description">
+              <p>Our standard button. Used for form actions as well as call-to-actions.
+Markup Note: Markup can vary depending on placement.</p>
+
+            </div>
+            
+            
+          </section>
+          
+          <section id="section-1.1" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">1.1</span> Basic Button</h1>
+            
+            
+            <div class="kss-description">
+              <p>Our standard button. Used for form actions as well as call-to-actions. 
+
+</p>
+<p>The width of these will change depending on placement but not the height.</p>
+
+            </div>
+            
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <a href="#" class="button {$modifiers}">Link Button</a>
+<button class="button {$modifiers}">Button Element</button>
+<input type="button" class="button {$modifiers}" value="input[type='button']"/>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">:hover</div>
+                  <div class="kss-modifier-description">
+                    <p>Subtle hover highlight.</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <a href="#" class="button pseudo-class-hover">Link Button</a>
+<button class="button pseudo-class-hover">Button Element</button>
+<input type="button" class="button pseudo-class-hover" value="input[type='button']"/>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">.grey</div>
+                  <div class="kss-modifier-description">
+                    <p>A highlight indicating you&apos;ve already given a star.</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <a href="#" class="button grey">Link Button</a>
+<button class="button grey">Button Element</button>
+<input type="button" class="button grey" value="input[type='button']"/>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">:hover.grey</div>
+                  <div class="kss-modifier-description">
+                    <p>Subtle hover highlight on top of stars-given styling.</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <a href="#" class="button pseudo-class-hover grey">Link Button</a>
+<button class="button pseudo-class-hover grey">Button Element</button>
+<input type="button" class="button pseudo-class-hover grey" value="input[type='button']"/>
+                </div>
+              </div>
+              
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;a href=&quot;#&quot; class=&quot;button {$modifiers}&quot;&gt;Link Button&lt;/a&gt;
+&lt;button class=&quot;button {$modifiers}&quot;&gt;Button Element&lt;/button&gt;
+&lt;input type=&quot;button&quot; class=&quot;button {$modifiers}&quot; value=&quot;input[type=&#x27;button&#x27;]&quot;/&gt;</code></pre>
+              </div>
+            </div>
+            
+          </section>
+          
+          <section id="section-1.2" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">1.2</span> Dot Button</h1>
+            
+            
+            <div class="kss-description">
+              <p>Our marquee dot button. Used for marquee navigation.
+
+</p>
+<p>Markup Note: Markup can vary depending on placement.</p>
+
+            </div>
+            
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <button class="dot-btn {$modifiers}"></button>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">:hover</div>
+                  <div class="kss-modifier-description">
+                    <p>Subtle hover highlight.</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <button class="dot-btn pseudo-class-hover"></button>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">.active</div>
+                  <div class="kss-modifier-description">
+                    <p>Active dot in the marquee</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <button class="dot-btn active"></button>
+                </div>
+              </div>
+              
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;button class=&quot;dot-btn {$modifiers}&quot;&gt;&lt;/button&gt;</code></pre>
+              </div>
+            </div>
+            
+          </section>
+          
+          <section id="section-1.3" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">1.3</span> Social Buttons</h1>
+            
+            
+            <div class="kss-description">
+              <p>This is our social button network set. 
+
+</p>
+<p>These are more than likely going to in sets of five and will vary in size depending on placement.</p>
+
+            </div>
+            
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <ul class="share-this" share-this="">   
+    <li>
+        <a title="Share on Facebook" class="mm-icon facebook icon_font_facebook" href=""></a>
+    </li>  
+    <li>
+        <a title="Share on Twitter" class="mm-icon twitter icon_font_twitter" href=""></a>
+    </li>  
+    <li>
+        <a title="Share on Google+" class="mm-icon google-plus icon_font_google-plus" href=""></a>
+    </li>   
+    <li>
+        <a title="Share on LinkedIn" class="mm-icon linkedin icon_font_linkedin" href=""></a>
+    </li>   
+    <li>
+        <a  title="Share via Email" class="mm-icon email icon_font_mail" href=""></a>
+    </li>
+</ul>
+                </div>
+              </div>
+              
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;ul class=&quot;share-this&quot; share-this=&quot;&quot;&gt;   
+    &lt;li&gt;
+        &lt;a title=&quot;Share on Facebook&quot; class=&quot;mm-icon facebook icon_font_facebook&quot; href=&quot;&quot;&gt;&lt;/a&gt;
+    &lt;/li&gt;  
+    &lt;li&gt;
+        &lt;a title=&quot;Share on Twitter&quot; class=&quot;mm-icon twitter icon_font_twitter&quot; href=&quot;&quot;&gt;&lt;/a&gt;
+    &lt;/li&gt;  
+    &lt;li&gt;
+        &lt;a title=&quot;Share on Google+&quot; class=&quot;mm-icon google-plus icon_font_google-plus&quot; href=&quot;&quot;&gt;&lt;/a&gt;
+    &lt;/li&gt;   
+    &lt;li&gt;
+        &lt;a title=&quot;Share on LinkedIn&quot; class=&quot;mm-icon linkedin icon_font_linkedin&quot; href=&quot;&quot;&gt;&lt;/a&gt;
+    &lt;/li&gt;   
+    &lt;li&gt;
+        &lt;a  title=&quot;Share via Email&quot; class=&quot;mm-icon email icon_font_mail&quot; href=&quot;&quot;&gt;&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+              </div>
+            </div>
+            
+          </section>
+          
+          
+        </article>
+        <footer class="kss-footer">
+          <div>Created using <a href="https://github.com/hughsk/kss-node">kss-node</a> and <a href="https://github.com/htanjo/kss-node-template">kss-node-template</a>.</div>
+        </footer>
+      </div>
+    </div>
+    <script src="public/kss.js"></script>
+    <script src="public/jquery-1.9.1.min.js"></script>
+    <!--[if gt IE 8]><!-->
+    <script src="public/rainbow.min.js"></script>
+    <!--<![endif]-->
+    <script src="public/main.js"></script>
+  </body>
+</html>
